@@ -1,0 +1,180 @@
+﻿CREATE TABLE IF NOT EXISTS `goc` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `cat_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `image_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `image_name` varchar(200) NOT NULL,
+  `banner_id` bigint(20) NOT NULL DEFAULT '0',
+  `banner_name` varchar(255) NOT NULL,
+  `icon_id` bigint(11) NOT NULL DEFAULT '0',
+  `icon_name` varchar(255) NOT NULL,
+  `icon_fa` varchar(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `brief` text NOT NULL COMMENT 'Tóm tăt ',
+  `description` text NOT NULL COMMENT 'Giới thiệu ',
+  `tags` varchar(255) NOT NULL,
+  `video` varchar(255) NOT NULL,
+  `video_data` text NOT NULL,
+  `common_data` text NOT NULL COMMENT 'Lưu trữ các thông tin phụ',
+  `stats_data` text NOT NULL COMMENT 'Lưu trữ các thông tin thống kê',
+  `is_new` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_feature` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_soon` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_slide` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_live` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_in_menu` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `sort_order` int(11) NOT NULL DEFAULT '0',
+  `seo_url` varchar(200) NOT NULL,
+  `seo_title` varchar(200) NOT NULL,
+  `seo_description` varchar(200) NOT NULL,
+  `seo_index` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `seo_keywords` varchar(200) NOT NULL,
+  `count_buy` int(11) NOT NULL DEFAULT '0',
+  `count_view` int(11) NOT NULL DEFAULT '0',
+  `view_total` int(11) NOT NULL DEFAULT '0',
+  `view_date_day` int(11) NOT NULL DEFAULT '0',
+  `view_in_day` int(11) NOT NULL DEFAULT '0',
+  `view_in_month` int(11) NOT NULL DEFAULT '0',
+  `comment_fb_allow` tinyint(3) NOT NULL DEFAULT '0',
+  `comment_allow` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `comment_count` int(10) unsigned NOT NULL DEFAULT '0',
+  `rate` float unsigned NOT NULL DEFAULT '0',
+  `rate_allow` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `rate_total` int(10) unsigned NOT NULL DEFAULT '0',
+  `rate_one` int(10) unsigned NOT NULL DEFAULT '0',
+  `rate_two` int(10) unsigned NOT NULL DEFAULT '0',
+  `rate_three` int(10) unsigned NOT NULL DEFAULT '0',
+  `rate_four` int(10) unsigned NOT NULL DEFAULT '0',
+  `rate_five` int(10) unsigned NOT NULL DEFAULT '0',
+  `updated` int(11) unsigned NOT NULL DEFAULT '0',
+  `updated_by` int(11) unsigned NOT NULL DEFAULT '0',
+  `created` int(11) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(11) unsigned NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `user_options` varchar(255) DEFAULT NULL COMMENT 'Cấu hình chia sẻ lợi nhuận',
+  `affiliate_options` varchar(255) DEFAULT NULL COMMENT 'Cấu hình Affiliate',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
+
+CREATE TABLE IF NOT EXISTS `goc_cat` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `level` int(11) unsigned NOT NULL DEFAULT '0',
+  `image_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `image_name` varchar(200) NOT NULL,
+  `banner_id` bigint(20) NOT NULL DEFAULT '0',
+  `banner_name` varchar(255) NOT NULL,
+  `icon_id` bigint(11) NOT NULL DEFAULT '0',
+  `icon_name` varchar(255) NOT NULL,
+  `icon_fa` varchar(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `brief` text NOT NULL COMMENT 'Tóm tăt ',
+  `description` text NOT NULL COMMENT 'Giới thiệu ',
+  `tags` varchar(255) NOT NULL,
+  `video` varchar(255) NOT NULL,
+  `video_data` text NOT NULL,
+  `common_data` text NOT NULL COMMENT 'Lưu trữ các thông tin phụ',
+  `stats_data` text NOT NULL COMMENT 'Lưu trữ các thông tin thống kê',
+  `is_new` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_feature` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_slide` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_in_menu` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `sort_order` int(11) NOT NULL DEFAULT '0',
+  `seo_url` varchar(200) NOT NULL,
+  `seo_title` varchar(200) NOT NULL,
+  `seo_description` varchar(200) NOT NULL,
+  `seo_index` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `seo_keywords` varchar(200) NOT NULL,
+  `updated` int(11) unsigned NOT NULL DEFAULT '0',
+  `updated_by` int(11) unsigned NOT NULL DEFAULT '0',
+  `created` int(11) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(11) unsigned NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `goc_owner` (
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `table_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `table_name` varchar(50) NOT NULL,
+  `view_count` int(11) NOT NULL DEFAULT '0',
+  `view_max` int(11) NOT NULL DEFAULT '0',
+  `watch_count` int(11) NOT NULL DEFAULT '0',
+  `watch_max` int(11) NOT NULL DEFAULT '0',
+  `download_count` int(11) NOT NULL DEFAULT '0',
+  `download_max` int(11) NOT NULL DEFAULT '0',
+  `expired` int(11) NOT NULL DEFAULT '0',
+  `stats_data` text NOT NULL COMMENT 'Lưu dư thông tin thống kê bổ xung nếu có',
+  `limit_data` text NOT NULL COMMENT 'Lưu dư thông tin giới hạn bổ xung nếu có',
+  `status` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Neu tat thi tam khoa quyen sở hữu này',
+
+  `updated_status` int(11) NOT NULL,
+  `updated` int(11) NOT NULL,
+  `created` int(11) NOT NULL,
+  `admin_updated` int(11) NOT NULL,
+  `admin_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `admin_id` int(11) NOT NULL DEFAULT '0',
+  UNIQUE KEY `user_id_doc_id` (`user_id`,`table_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `goc_to_favorite` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `goc_id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `created` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `goc_to_question_answer` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `user_id` int(255) NOT NULL,
+  `teacher_id` int(11) NOT NULL DEFAULT '0',
+  `goc_id` int(11) NOT NULL DEFAULT '0',
+  `question` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `answer` text COLLATE utf8_unicode_ci NOT NULL,
+  `created` int(11) NOT NULL,
+  `sort_order` tinyint(4) NOT NULL,
+  `readed` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `goc_to_report` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `goc_id` int(11) NOT NULL DEFAULT '0',
+  `content` varchar(255) COLLATE utf8_bin NOT NULL,
+  `readed` tinyint(1) NOT NULL DEFAULT '0',
+  `created` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `goc_to_updated` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `goc_id` int(11) NOT NULL DEFAULT '0',
+  `created` int(11) NOT NULL DEFAULT '0',
+  `status` enum('0','1') COLLATE utf8_bin NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `goc_to_view` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `goc_id` int(255) NOT NULL,
+  `key` varchar(255) NOT NULL,
+  `time_current` int(11) NOT NULL DEFAULT '0',
+  `user_id` int(255) NOT NULL,
+  `updated` int(11) NOT NULL DEFAULT '0',
+  `created` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
